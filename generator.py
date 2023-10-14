@@ -42,6 +42,11 @@ invalidAnswer = {
     "EN": "Something went wrong, answer again: ",
     }
 
+readMore = {
+    "PL": "Czytamy dalej? T/N",
+    "ENG": "Wanna read some more?",
+
+    }
 
 
 file = open("MyRandomWikis.txt", "a")
@@ -56,9 +61,33 @@ def randomArticle():
 def ratingValidator():
     print(rate[lang])
     rating = input("")
+
+
     if int(rating)<=5 and int(rating) >=0:
-            file.write(randomArticle() + "    " + rating + "\n")
-            print("cool")
+        file.write(randomArticle() + "    " + rating + "\n")
+       
+
+
+    else:
+        
+        print(invalidRating[lang])
+        ratingValidator()
+
+    print(readMore[lang])
+    wannaReadMore = input("").upper
+
+    if wannaReadMore=="T" or wannaReadMore=="Y":
+        userService(lang)
+
+    elif wannaReadMore=="N":
+        quit()
+
+        #else:
+            #print(invalidAnswer[lang])
+
+        #add invalid case when rating is a letter, cause error
+        #fix the loop - after wanna read more uder service does not work the second time
+            
     
 
 def answerValidator():
