@@ -1,17 +1,9 @@
-#import requests
-#import webbrowser
-#from bs4 import BeautifulSoup
-
+import requests
+import webbrowser
+from bs4 import BeautifulSoup
 import datetime
 
-print("Your cure for boredom")
-print("Randomized Wikipedia article")
-
-#Language choosing section for best experience
-print("Choose language:\n")
-print("PL / EN")
-lang = input("").upper()
-
+#Stored text options for both language options
 greeting = {
     "PL": "Dzien dobry! Jesli tutaj jestes, zapewne sie nudzisz...\n",
     "EN": "Hello! If you're here, that means you must be really bored...\n",
@@ -51,63 +43,38 @@ readMore = {
 
 file = open("MyRandomWikis.txt", "a")
 
-
 #print("Chosen language: " + languages[lang])
 
+#Core function generating the article from basic webscraping
 def randomArticle():
     article = "hehe"
+    print(article)
     return article
 
+#Making sure the rating given by user is within the given range
 def ratingValidator():
     print(rate[lang])
     rating = input("")
 
-
     if int(rating)<=5 and int(rating) >=0:
-        file.write(randomArticle() + "    " + rating + "\n")
-       
-
+        print("Super!")
 
     else:
-        
         print(invalidRating[lang])
         ratingValidator()
-
-    print(readMore[lang])
-    wannaReadMore = input("").upper
-
-    if wannaReadMore=="T" or wannaReadMore=="Y":
-        userService(lang)
-
-    elif wannaReadMore=="N":
-        quit()
-
-        #else:
-            #print(invalidAnswer[lang])
-
-        #add invalid case when rating is a letter, cause error
-        #fix the loop - after wanna read more uder service does not work the second time
             
-    
-
+#Making sure the answer given by the user makes sense (Y/N or T/N format)
 def answerValidator():
     answer = input("").upper()
 
     if answer=="T" or answer=="Y":
         print(articleAdded[lang])
 
-        
-        
-
         file.write(str(datetime.datetime.now()))
         file.write("    ")
 
         ratingValidator()
-            
-            
-
-        
-                    
+                               
     elif answer=="N":
         print("\n")
         userService(lang)
@@ -116,20 +83,31 @@ def answerValidator():
         print(invalidAnswer[lang])
         answerValidator()
     
-
+#A function tying the whole program together, containing all the other functions
 def userService(lang):
-
-    print(randomArticle())
+    randomArticle()
     print(whatchaSay[lang])
-
     answerValidator()
+    file.close()
 
 
-  
-        
+#Here goes the Service!
+print("Your cure for curiosity and boredom")
+print("Randomized Wikipedia article")
+
+lang = ""
+
+#Language choosing section for best experience
+while lang != "PL" and lang != "EN":
+    print("Choose language:\n")
+    print("PL / EN")
+    lang = input("").upper()
+    
 print(greeting[lang])
-
-
 userService(lang)
 
-file.close()
+input("Hit enter to exit")
+exit()
+        
+
+
