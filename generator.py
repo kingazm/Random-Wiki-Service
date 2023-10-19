@@ -1,7 +1,8 @@
 import requests
 import webbrowser
-from bs4 import BeautifulSoup
-import datetime
+from bs4 import BeautifulSoup #webscraping magic
+import datetime #provides current time to file log
+#import wikipedia #provides summaries, deactivated for now
 
 #Stored text options for both language options
 greeting = {
@@ -10,8 +11,8 @@ greeting = {
     }
 
 whatchaSay = {
-    "PL":"Co powiesz na ten losowo wybrany artykuł?\n T/N",
-    "EN": "How about this randomly choosen article?\n Y/N",
+    "PL":"Co powiesz na ten losowo wybrany artykuł? Czytamy dalej?\n T/N",
+    "EN": "How about this randomly choosen article? Wanna read more?\n Y/N",
     }
 
 articleAdded = {
@@ -47,9 +48,47 @@ file = open("MyRandomWikis.txt", "a")
 
 #Core function generating the article from basic webscraping
 def randomArticle():
-    article = "hehe"
-    print(article)
-    return article
+
+    if lang == "EN":
+        url = requests.get("https://en.wikipedia.org/wiki/Special:Random")
+        urlOfLang = "https://en.wikipedia.org/wiki/%s"
+
+    elif lang == "PL":
+        url = requests.get("https://pl.wikipedia.org/wiki/Special:Random")
+        urlOfLang = "https://pl.wikipedia.org/wiki/%s"
+
+    soup = BeautifulSoup(url.content, "html.parser")
+    articleTitle = soup.find(class_="firstHeading").text
+    print(articleTitle)
+
+    #checks if the answer is correct format, then goes to the website
+    print(whatchaSay[lang])
+    answer = input("").upper()
+
+    if answer=="T" or answer=="Y":
+        print(articleAdded[lang])
+        
+        file.write(str(datetime.datetime.now()))
+        file.write("    ")
+
+        url = urlOfLang % articleTitle
+        webbrowser.open(url)
+
+        ratingValidator()
+                               
+    elif answer=="N":
+        print("\n")
+        userService(lang)
+
+    else:
+        print(invalidAnswer[lang])
+        answerValidator()
+
+    #if lang == "EN":
+        #articleSummary = wikipedia.summary(articleTitle)
+        #print(articleSummary) #summary causes some issues in PL for now, too long in EN at times
+        
+    return articleTitle
 
 #Making sure the rating given by user is within the given range
 def ratingValidator():
@@ -69,9 +108,12 @@ def answerValidator():
 
     if answer=="T" or answer=="Y":
         print(articleAdded[lang])
-
+        
         file.write(str(datetime.datetime.now()))
         file.write("    ")
+
+        url = "https://en.wikipedia.org/wiki/%s" % articleTitle
+        webbrowser.open(url)
 
         ratingValidator()
                                
@@ -86,8 +128,9 @@ def answerValidator():
 #A function tying the whole program together, containing all the other functions
 def userService(lang):
     randomArticle()
-    print(whatchaSay[lang])
-    answerValidator()
+    #print(whatchaSay[lang])
+    #answerValidator()
+    
     file.close()
 
 
