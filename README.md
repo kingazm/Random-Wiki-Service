@@ -30,4 +30,4 @@ which lists all the elements in the directory.
 After entering the folder with generator.py, type<br>
 python generator.py (or python3 generator.py on MacOS)
 
-And voile'a! The app is running in the Command Line!
+And voile! The app is running in the Command Line!
