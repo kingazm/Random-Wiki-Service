@@ -6,6 +6,11 @@ Here's your sollution, presenting Random Wiki Service - an app providing user-fr
 
 After choosing the language, the app proposes new articles until the user is satisfied. Then, opens said article directly in the browser and saves the current date, link/title and article's rating given by user, maintaining this log of fun information for later.
 
+Disclaimer: may require additionally installing requests and Beautiful Soup 4, so commands:
+
+pip install requests (pip3 on MacOS)
+pip install BeautifulSoup4
+
 # Tech stack
 
 Python, BeautifulSoup library (webscraping), (other libraries will be listed soon!)
