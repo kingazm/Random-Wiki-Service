@@ -8,7 +8,7 @@ After choosing the language, the app proposes new articles until the user is sat
 
 # Tech stack
 
-Python, BeautifulSoup library (webscraping), (...)
+Python, BeautifulSoup library (webscraping), (other libraries will be listed soon!)
 
 
 # How to use it?
