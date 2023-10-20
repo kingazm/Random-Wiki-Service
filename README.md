@@ -1,5 +1,10 @@
 # Random-Wiki-Service - what is that?
 
+Have you ever needed something new to read in your spare time, not to procrastinate or endlessly scroll but you've run out of ideas, articles, books?
+
+Here's your sollution, presenting Random Wiki Service - an app providing user-friendly experience - random Wikipedia articles in English and Polish.
+
+After choosing the language, the app proposes new articles until the user is satisfied. Then, opens said article directly in the browser and saves the current date, link/title and article's rating given by user, maintaining this log of fun information for later.
 
 # Tech stack
 
@@ -15,15 +20,14 @@ https://www.python.org/downloads/
 Having python on your computer, download the generator.py file.
 The text file will be created on your computer locally if it does not already exist.
 
-To run .py program, open Command Line in the directory of the folder you've saved the generator.py or manually go to that path using
-cd (here goes folder you want to enter)
+To run .py program, open Command Line in the directory of the folder you've saved the generator.py or manually go to that path using <br> cd (here goes folder you want to enter) <br>
 This may take a couple of commands, depending on where exactly is the file.
 
-You can check if you've entered the right folder by using
-ls
+You can check if you've entered the right folder by using<br>
+ls<br>
 which lists all the elements in the directory.
 
-After entering the folder with generator.py, type
+After entering the folder with generator.py, type<br>
 python generator.py (or python3 generator.py on MacOS)
 
 And voile'a! The app is running in the Command Line!
