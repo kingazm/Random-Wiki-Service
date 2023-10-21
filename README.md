@@ -13,7 +13,7 @@ pip install BeautifulSoup4
 
 # Tech stack
 
-Python, BeautifulSoup library (webscraping), (other libraries will be listed soon!)
+Python, BeautifulSoup library (webscraping), Requests, Webbrowser, Datetime
 
 
 # How to use it?
